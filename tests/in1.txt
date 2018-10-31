@@ -1,4 +1,4 @@
-#checks if program will detect if query cannot be found
+#checks if program can find queries (all outputs should be yes)
 
 Schemes:
   MT(X,Y)
@@ -14,4 +14,4 @@ Queries:
   MT('y','z')?
   MT(X,X)?
   MT(A,B)?
-  MT('z','z')?
+ 

@@ -75,7 +75,7 @@ string Interpreter::runQueries() {
         column_indexes.push_back(i);
       }
     }
-    cout << "selected_relation before passed rows.size() " << selected_relation->rows.size() << endl;
+    //cout << "selected_relation before passed rows.size() " << selected_relation->rows.size() << endl;
     shared_ptr<Relation> projected_relation = this->database->project("selected_relation", column_indexes);
     this->database->addRelation("projected_relation", projected_relation);
     
@@ -88,9 +88,9 @@ string Interpreter::runQueries() {
     shared_ptr<Relation> renamed_relation = this->database->rename("projected_relation", scheme_parameters);
     this->database->addRelation("renamed_relation", renamed_relation);
     
-    cout << "selected rows.size() = " << selected_relation->rows.size() << endl;
-    cout << "projected rows.size() = " << projected_relation->rows.size() << endl;
-    cout << "renamed rows.size() = " << renamed_relation->rows.size() << endl << endl;
+    //cout << "selected rows.size() = " << selected_relation->rows.size() << endl;
+    //cout << "projected rows.size() = " << projected_relation->rows.size() << endl;
+    //cout << "renamed rows.size() = " << renamed_relation->rows.size() << endl << endl;
     
     output += query->toString() + "?";
     if (renamed_relation->rows.size() == 0 && selected_relation->rows.size() == 0) {

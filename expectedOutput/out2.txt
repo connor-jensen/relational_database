@@ -1,0 +1,13 @@
+#checks if program will detect if query cannot be found
+
+MT(X,'z')? Yes(2)
+  X='x'
+  X='y'
+MT('y','z')? Yes(1)
+MT(X,X)? Yes(1)
+  X='y'
+MT(X,Y)? Yes(3)
+  X='x', B='z'
+  X='y', B='y'
+  X='y', B='z'
+MT('z','z')? No

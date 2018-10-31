@@ -1,0 +1,12 @@
+#checks if program will query on a predicate with no facts
+
+Schemes:
+  McKayl(X)
+
+Facts:
+
+Rules:
+
+Queries:
+  McKayl(X)?
+

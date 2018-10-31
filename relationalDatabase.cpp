@@ -10,7 +10,7 @@ void RelationalDatabase::addRelation(string name, shared_ptr<Relation> relation)
   if (this->getRelation(name)!= nullptr) {
     this->relations.erase(this->relations.find(name));
   }
-  cout << "addRelation relation.rows.size() " << relation->rows.size() << endl;
+  //cout << "addRelation relation.rows.size() " << relation->rows.size() << endl;
   relation->name = name;
   relations.insert(pair<string, shared_ptr<Relation>>(name, relation));
   
@@ -109,7 +109,7 @@ shared_ptr<Relation> RelationalDatabase::getRelation(string name){
     return nullptr;
   }
   
-  cout << "getRelation(" << name <<") rows.size " << this->relations[name]->rows.size() << endl;
+  //cout << "getRelation(" << name <<") rows.size " << this->relations[name]->rows.size() << endl;
   return this->relations[name];
   
 }
