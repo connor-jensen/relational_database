@@ -1,12 +1,10 @@
-#checks if program can find queries (all outputs should be yes)
-
 MT(X,'z')? Yes(2)
   X='x'
   X='y'
 MT('y','z')? Yes(1)
 MT(X,X)? Yes(1)
   X='y'
-SK(X,Y)? Yes(3)
-  X='x', B='z'
-  X='y', B='y'
-  X='y', B='z'
+MT(A,B)? Yes(3)
+  A='x', B='z'
+  A='y', B='y'
+  A='y', B='z'
