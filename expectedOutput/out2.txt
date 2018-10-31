@@ -1,5 +1,3 @@
-#checks if program will detect if query cannot be found
-
 MT(X,'z')? Yes(2)
   X='x'
   X='y'
