@@ -7,7 +7,9 @@ RelationalDatabase::RelationalDatabase() {
 RelationalDatabase::~RelationalDatabase() {}
 
 void RelationalDatabase::addRelation(string name, shared_ptr<Relation> relation){
-  
+  if (this->getRelation(name)!= nullptr) {
+    this->relations.erase(this->relations.find(name));
+  }
   cout << "addRelation relation.rows.size() " << relation->rows.size() << endl;
   relation->name = name;
   relations.insert(pair<string, shared_ptr<Relation>>(name, relation));
