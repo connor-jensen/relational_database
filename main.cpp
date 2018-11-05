@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <memory>
 
@@ -12,78 +13,78 @@
 
 int main(int argc, char* argv[])
 {
-    vector<string> inputFileNames
-    {
-        "in1.txt",
-        "in2.txt",
-        "in3.txt"
-        // "in4.txt",
-        // "in5.txt",
-        // "in6.txt",
-        // "in7.txt",
-        // "in8.txt",
-        // "in9.txt",
-        // "in10.txt"
-    };
+    // part 1 testing:
 
-    vector<string> expectedOutputFileNames
-    {
-        "out1.txt",
-        "out2.txt",
-        "out3.txt"
-        // "out4.txt",
-        // "out1.txt",
-        // "out5.txt",
-        // "out6.txt",
-        // "out7.txt",
-        // "out8.txt",
-        // "out9.txt",
-        // "out10.txt"
-    };
+    // vector<string> inputFileNames
+    // {
+    //     "in1.txt", // schedule('M', C)?) - select on 'M' before variable
+    //     "in2.txt", // schedule(D, '236')? - select on '236' after variable
+    //     "in3.txt", // schedule('M', Y)? - rename after constant
+    //     "in4.txt", // schedule(X, '236')? - rename before constant
+    //     "in5.txt", // schedule(D)? - project on D
+    //     "in6.txt", // schedule(C)? - project on C
+    //     "in7.txt", // schedule(X, '113')? - QUERY: select on '113', rename D,
+    //     "in8.txt", // schedule('M', C)? - QUERY: select on 'M', project on C
+    //     "in9.txt", // schedule('M', X, Y) - QUERY: select on 'M', rename on X and Y 
+    //     "in10.txt" // schedule(A, B, B) - QUERY: select on B B, rename to B
+    // };
 
-    for(int i = 0; i < inputFileNames.size(); i++) {
-        Scanner scanner("tests/" + inputFileNames[i]);
-        vector<shared_ptr<Token>> tokens = scanner.lexicalAnalyzer();
+    // vector<string> expectedOutputFileNames
+    // {
+    //     "out1.txt",
+    //     "out2.txt",
+    //     "out3.txt",
+    //     "out4.txt",
+    //     "out5.txt",
+    //     "out6.txt",
+    //     "out7.txt",
+    //     "out8.txt",
+    //     "out9.txt",
+    //     "out10.txt"
+    // };
 
-        Parser parser = Parser(tokens);
-        shared_ptr<DatalogProgram> program = parser.datalogParsing();
+    // for(int i = 0; i < inputFileNames.size(); i++) {
+    //     Scanner scanner("tests/" + inputFileNames[i]);
+    //     vector<shared_ptr<Token>> tokens = scanner.lexicalAnalyzer();
 
-        Interpreter interpreter = Interpreter(program);
-        interpreter.createDatabase();
+    //     Parser parser = Parser(tokens);
+    //     shared_ptr<DatalogProgram> program = parser.datalogParsing();
 
-        string output = interpreter.runQueries();
+    //     Interpreter interpreter = Interpreter(program);
+    //     interpreter.createDatabase();
 
-        ifstream expectedOutputFile("expectedOutputs/" + expectedOutputFileNames[i]);
+    //     string output = interpreter.runQueries();
 
-        stringstream ss;
-        ss << expectedOutputFile.rdbuf();
-        string expectedOutput = ss.str();
+    //     ifstream expectedOutputFile("expectedOutputs/" + expectedOutputFileNames[i]);
+    //     std::ofstream actualOutputFile("actualOutputs/" + expectedOutputFileNames[i]);
 
-        cout << "Test " << i << ": ";
-        if (expectedOutput == output) {
-            cout << "PASS" << endl;
-        }
-        else cout << "FAIL" << endl;
+    //     stringstream ss;
+    //     ss << expectedOutputFile.rdbuf();
+    //     string expectedOutput = ss.str();
 
-        cout << "Expected output:" << endl;
-        cout << expectedOutput << endl << endl;
+    //     actualOutputFile << output;
 
-        cout << "Actual output:" << endl;
-        cout << output;
-    }
+    //     cout << "Test " << i + 1 << ": ";
+    //     if (expectedOutput == output) {
+    //         cout << "PASS" << endl;
+    //     }
+    //     else cout << "FAIL" << endl;
 
-    // Scanner scanner(argv[1]);
-    // std::vector<shared_ptr<Token>> tokens = scanner.lexicalAnalyzer();
+    //     cout << "output:" << endl;
+    //     cout << output << endl << endl;
+    // }
+
+    // part 2
+    Scanner scanner(argv[1]);
+    std::vector<shared_ptr<Token>> tokens = scanner.lexicalAnalyzer();
     
-    // Parser parser = Parser(tokens);
-    // shared_ptr<DatalogProgram> program = parser.datalogParsing();
+    Parser parser = Parser(tokens);
+    shared_ptr<DatalogProgram> program = parser.datalogParsing();
     
-    // Interpreter interpreter = Interpreter(program);
-    // interpreter.createDatabase();
+    Interpreter interpreter = Interpreter(program);
+    interpreter.createDatabase();
     
-    // std::cout << interpreter.runQueries();
-    
-    //delete program;
+    std::cout << interpreter.runQueries();
     
     return 0;
 }

@@ -1,17 +1,10 @@
-#checks if program can find queries (all outputs should be yes)
-
 Schemes:
-  MT(X,Y)
+  Schedule(D,C)
 Facts:
-  MT('x','z').
-  MT('y','z').
-  MT('y','y').
-  MT('y','z').
+  Schedule('M','236').
+  Schedule('M','113').
+  Schedule('T','113l').
 Rules:
 
 Queries:
-  MT(X,'z')?
-  MT('y','z')?
-  MT(X,X)?
-  MT(A,B)?
- 
+  Schedule('M', C)?

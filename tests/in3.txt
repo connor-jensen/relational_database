@@ -1,12 +1,10 @@
-#checks if program will query on a predicate with no facts
-
 Schemes:
-  McKayl(X)
-
+  Schedule(D,C)
 Facts:
-
+  Schedule('M','236').
+  Schedule('M','113').
+  Schedule('T','113l').
 Rules:
 
 Queries:
-  McKayl(X)?
-
+  Schedule('M', '113')?

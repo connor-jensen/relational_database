@@ -7,4 +7,4 @@ Facts:
 Rules:
 
 Queries:
-  Schedule(D, '236')?
+  Schedule(C, C)?

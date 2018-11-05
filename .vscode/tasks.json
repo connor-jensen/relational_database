@@ -12,8 +12,7 @@
                 "-std=c++11",
                 "*.cpp",
                 "-o",
-                "lab4",
-                "in.txt"
+                "lab4"
             ],
             "group": {
                 "kind": "build",

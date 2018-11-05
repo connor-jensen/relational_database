@@ -105,6 +105,9 @@ string Interpreter::runQueries() {
       output += renamed_relation->toString();
     }
   }
+  if (!output.empty()) {
+    output.pop_back(); //remove last newline
+  }
   
   return output;
 }
